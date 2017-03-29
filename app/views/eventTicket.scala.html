@@ -1,10 +1,6 @@
 @import helper._
 
-@{addTicketForm: Form[models.Ticket]}
-
-
-
-
+@(eventTicket: List[models.Ticket], events: List[models.Event])
 
 @main("Welcome to Play") {
     <!--..CONTENT..-->
@@ -80,8 +76,7 @@
 
             <div id="products" class="row list-group">
                         <!-- Start of for loop - Fo reach e in events add a row -->
-                    @for(t <- tickets) {
-                        <a href="@routes.HomeController.eventTicket()">
+                    @for(t <- eventTicket) {
                             <div class="item  col-xs-4 col-lg-4">
                                 <div class="thumbnail">
 
@@ -96,7 +91,7 @@
                                             <div class="col-xs-12 col-md-6">
                                            
 
-                                                <a href="@routes.HomeController.deleteTicket(e.getTicketID)" class = "btn-xs btn-danger"
+                                                <a href="@routes.HomeController.deleteTicket(t.getTicketID)" class = "btn-xs btn-danger"
                                                 onclick="return confirmDel();">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </a>
@@ -107,7 +102,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
+
                     } <!-- End of for loop -->
 
             </div>

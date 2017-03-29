@@ -35,6 +35,9 @@ public class Ticket extends Model {
     @Constraints.Required
     private double price;
 
+    @ManyToOne
+    private Event events;
+
 
     public Ticket() {
     }
@@ -96,4 +99,14 @@ public class Ticket extends Model {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public static Finder<Long,Ticket> find = new Finder<Long, Ticket>(Ticket.class);
+
+    // Find all Events in the database
+    // Filter event name
+    public static List<Ticket> findAll() {
+        return Ticket.find.all();
+    }
+
+
 }

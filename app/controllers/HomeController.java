@@ -82,9 +82,7 @@ public class HomeController extends Controller {
         return ok(events.render(eventsList));
     }
 
-    public Result eventTicket() {
-        return ok(eventTicket.render());
-    }
+
 
     public Result login() {
         return ok(login.render());
@@ -126,5 +124,21 @@ public class HomeController extends Controller {
         flash("success","Ticket has been deleted");
 
         return redirect(routes.HomeController.eventTicket());
+    }
+    public Result eventTicket(Long eventId) {
+
+        // Get list of events
+        List<Ticket> eventTicketList = Ticket.findAll();
+        // Render the list events view, passing parameters
+        List<Event> eventList = Event.findAll();
+
+        if(eventId == 0){
+            eventTicketList = Ticket.findAll();
+        }
+        else{
+            eventTicketList = Event.find.ref(eventId).getEventTicket();
+        }
+
+        return ok(eventTicket.render(eventTicketList, eventList));
     }
 }

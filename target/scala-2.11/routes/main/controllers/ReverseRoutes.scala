@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
-// @SOURCE:C:/Users/Jay/Desktop/TicketStore/conf/routes
-// @DATE:Tue Mar 28 21:01:59 BST 2017
+// @SOURCE:C:/Users/Jay/Desktop/TicketStore - Copy/conf/routes
+// @DATE:Wed Mar 29 13:43:53 BST 2017
 
 import play.api.mvc.{ QueryStringBindable, PathBindable, Call, JavascriptLiteral }
 import play.core.routing.{ HandlerDef, ReverseRouteContext, queryString, dynamicString }

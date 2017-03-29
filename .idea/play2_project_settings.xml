@@ -13,8 +13,7 @@
         <entry key="root">
           <value>
             <ProjectSettingsEntry>
-              <option name="sourceDir" value="$PROJECT_DIR$/app" />
-              <option name="confDir" value="C:\Users\Eileen\Desktop\TicketStore\app" />
+              <option name="confDir" value="C:\Users\Jay\Desktop\TicketStore - Copy\app" />
               <option name="templateImports">
                 <list>
                   <option value="models._" />
@@ -39,7 +38,7 @@
                   <option value="play.libs.F" />
                 </list>
               </option>
-              <option name="uri" value="/C:/Users/Eileen/Desktop/TicketStore" />
+              <option name="uri" value="/C:/Users/Jay/Desktop/TicketStore%20-%20Copy" />
             </ProjectSettingsEntry>
           </value>
         </entry>

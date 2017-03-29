@@ -37,6 +37,7 @@ create table ticket (
   quantity                      integer,
   qty                           integer,
   price                         double,
+  events_event_id               bigint,
   constraint pk_ticket primary key (ticket_id)
 );
 create sequence ticket_seq;
@@ -72,8 +73,14 @@ create table order_ticket (
 );
 create sequence order_ticket_seq;
 
+alter table ticket add constraint fk_ticket_events_event_id foreign key (events_event_id) references event (event_id) on delete restrict on update restrict;
+create index ix_ticket_events_event_id on ticket (events_event_id);
+
 
 # --- !Downs
+
+alter table ticket drop constraint if exists fk_ticket_events_event_id;
+drop index if exists ix_ticket_events_event_id;
 
 drop table if exists category;
 drop sequence if exists category_seq;

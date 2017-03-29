@@ -26,6 +26,9 @@ public class Event extends Model {
     @Constraints.Required
     private String title; // Artist?
 
+    @ManyToOne
+    public List<Ticket> eventTicket;
+
 
     public Event() {}
 
@@ -86,12 +89,23 @@ public class Event extends Model {
         this.title = title;
     }
 
+    public List<Ticket> getEventTicket() {
+        return eventTicket;
+    }
+
+    public void setEventTicket(List<Ticket> eventTicket) {
+        this.eventTicket = eventTicket;
+    }
+
     // Generic query helper for entity Computer with id long
     public static Finder<Long,Event> find = new Finder<Long, Event>(Event.class);
 
     // Find all Events in the database
     // Filter event name
     public static List<Event> findAll() {
-        return Event.find.all();
+        return Event.find.where().orderBy("name asc").findList();
     }
-}
+
+
+    }
+

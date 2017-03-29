@@ -24,22 +24,18 @@ import play.mvc.Http.Context.Implicit._
      object eventTicket_Scope1 {
 import helper._
 
-class eventTicket extends BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with play.twirl.api.Template0[play.twirl.api.HtmlFormat.Appendable] {
+class eventTicket extends BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with play.twirl.api.Template2[List[models.Ticket],List[models.Event],play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply():play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*3.2*/(eventTicket: List[models.Ticket], events: List[models.Event]):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 
 
-Seq[Any](_display_(/*3.2*/{addTicketForm: Form[models.Ticket]}),format.raw/*3.38*/("""
+Seq[Any](format.raw/*3.64*/("""
 
-
-
-
-
-"""),_display_(/*9.2*/main("Welcome to Play")/*9.25*/ {_display_(Seq[Any](format.raw/*9.27*/("""
-    """),format.raw/*10.5*/("""<!--..CONTENT..-->
+"""),_display_(/*5.2*/main("Welcome to Play")/*5.25*/ {_display_(Seq[Any](format.raw/*5.27*/("""
+    """),format.raw/*6.5*/("""<!--..CONTENT..-->
     <div class="container" id = "seatingplans">
         <div class="row well">
 		  <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
@@ -92,25 +88,42 @@ Seq[Any](_display_(/*3.2*/{addTicketForm: Form[models.Ticket]}),format.raw/*3.38
                 </div>
             </div>
         </div>
+
+          <div class="row well" id="tickets">
+            <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                <div class="row">
+                    <h1>  </h1>
+                    <a href=""""),_display_(/*64.31*/routes/*64.37*/.HomeController.addTicket()),format.raw/*64.64*/("""" class="btn btn-success btn-lg round">Add ticket</a>
+                    <br>
+                    <br>
+                    <strong>Display</strong>
+
+                    <div class="btn-group">
+                        <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+                        </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+                    class="glyphicon glyphicon-th"></span>Grid</a>
+                    </div>
+                </div>
+                <br>
+
             <div id="products" class="row list-group">
                         <!-- Start of for loop - Fo reach e in events add a row -->
-                    """),_display_(/*65.22*/for(t <- tickets) yield /*65.39*/ {_display_(Seq[Any](format.raw/*65.41*/("""
-                        """),format.raw/*66.25*/("""<a href=""""),_display_(/*66.35*/routes/*66.41*/.HomeController.eventTicket()),format.raw/*66.70*/("""">
-                            <div class="item  col-xs-4 col-lg-4">
+                    """),_display_(/*79.22*/for(t <- eventTicket) yield /*79.43*/ {_display_(Seq[Any](format.raw/*79.45*/("""
+                            """),format.raw/*80.29*/("""<div class="item  col-xs-4 col-lg-4">
                                 <div class="thumbnail">
 
                                     <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" >
                                     <div class="caption">    
                                         <p class="group inner list-group-item-text">
-                                            """),_display_(/*73.46*/t/*73.47*/.getTicketType),format.raw/*73.61*/("""
-                                            """),_display_(/*74.46*/t/*74.47*/.getPrice),format.raw/*74.56*/("""
+                                            """),_display_(/*86.46*/t/*86.47*/.getTicketType),format.raw/*86.61*/("""
+                                            """),_display_(/*87.46*/t/*87.47*/.getPrice),format.raw/*87.56*/("""
                                            
-                                        """),format.raw/*76.41*/("""</p>
+                                        """),format.raw/*89.41*/("""</p>
                                         <div class="row">
                                             <div class="col-xs-12 col-md-6">
                                            
 
-                                                <a href=""""),_display_(/*81.59*/routes/*81.65*/.HomeController.deleteTicket(e.getTicketID)),format.raw/*81.108*/("""" class = "btn-xs btn-danger"
+                                                <a href=""""),_display_(/*94.59*/routes/*94.65*/.HomeController.deleteTicket(t.getTicketID)),format.raw/*94.108*/("""" class = "btn-xs btn-danger"
                                                 onclick="return confirmDel();">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </a>
@@ -121,17 +134,18 @@ Seq[Any](_display_(/*3.2*/{addTicketForm: Form[models.Ticket]}),format.raw/*3.38
                                     </div>
                                 </div>
                             </div>
-                        </a>
-                    """)))}),format.raw/*93.22*/(""" """),format.raw/*93.23*/("""<!-- End of for loop -->
 
+                    """)))}),format.raw/*106.22*/(""" """),format.raw/*106.23*/("""<!-- End of for loop -->
+
+            </div>
+            </div>
         </div>
 
-        
    <script>
-        function confirmDel()"""),format.raw/*99.30*/("""{"""),format.raw/*99.31*/("""
-            """),format.raw/*100.13*/("""return confirm('Are you sure?');
-        """),format.raw/*101.9*/("""}"""),format.raw/*101.10*/("""
-    """),format.raw/*102.5*/("""</script>
+        function confirmDel()"""),format.raw/*113.30*/("""{"""),format.raw/*113.31*/("""
+            """),format.raw/*114.13*/("""return confirm('Are you sure?');
+        """),format.raw/*115.9*/("""}"""),format.raw/*115.10*/("""
+    """),format.raw/*116.5*/("""</script>
 
         <!--END CONTENT-->
        """)))}))
@@ -139,9 +153,9 @@ Seq[Any](_display_(/*3.2*/{addTicketForm: Form[models.Ticket]}),format.raw/*3.38
     }
   }
 
-  def render(): play.twirl.api.HtmlFormat.Appendable = apply()
+  def render(eventTicket:List[models.Ticket],events:List[models.Event]): play.twirl.api.HtmlFormat.Appendable = apply(eventTicket,events)
 
-  def f:(() => play.twirl.api.HtmlFormat.Appendable) = () => apply()
+  def f:((List[models.Ticket],List[models.Event]) => play.twirl.api.HtmlFormat.Appendable) = (eventTicket,events) => apply(eventTicket,events)
 
   def ref: this.type = this
 
@@ -155,11 +169,11 @@ Seq[Any](_display_(/*3.2*/{addTicketForm: Form[models.Ticket]}),format.raw/*3.38
 object eventTicket extends eventTicket_Scope0.eventTicket_Scope1.eventTicket
               /*
                   -- GENERATED --
-                  DATE: Tue Mar 28 21:01:59 BST 2017
-                  SOURCE: C:/Users/Jay/Desktop/TicketStore/app/views/eventTicket.scala.html
-                  HASH: 5ac646efceb8224536c498da08eeccf79739ac55
-                  MATRIX: 889->21|945->57|983->70|1014->93|1053->95|1086->101|3496->2484|3529->2501|3569->2503|3623->2529|3660->2539|3675->2545|3725->2574|4200->3022|4210->3023|4245->3037|4319->3084|4329->3085|4359->3094|4474->3181|4749->3429|4764->3435|4829->3478|5402->4020|5431->4021|5557->4119|5586->4120|5629->4134|5699->4176|5729->4177|5763->4183
-                  LINES: 35->3|35->3|41->9|41->9|41->9|42->10|97->65|97->65|97->65|98->66|98->66|98->66|98->66|105->73|105->73|105->73|106->74|106->74|106->74|108->76|113->81|113->81|113->81|125->93|125->93|131->99|131->99|132->100|133->101|133->101|134->102
+                  DATE: Wed Mar 29 14:47:07 BST 2017
+                  SOURCE: C:/Users/Jay/Desktop/TicketStore - Copy/app/views/eventTicket.scala.html
+                  HASH: 7160a12aa56b20741fb24cb6856823ef033d6b66
+                  MATRIX: 839->21|996->83|1026->88|1057->111|1096->113|1128->119|3587->2551|3602->2557|3650->2584|4404->3311|4441->3332|4481->3334|4539->3364|4982->3780|4992->3781|5027->3795|5101->3842|5111->3843|5141->3852|5256->3939|5531->4187|5546->4193|5611->4236|6157->4750|6187->4751|6344->4879|6374->4880|6417->4894|6487->4936|6517->4937|6551->4943
+                  LINES: 30->3|35->3|37->5|37->5|37->5|38->6|96->64|96->64|96->64|111->79|111->79|111->79|112->80|118->86|118->86|118->86|119->87|119->87|119->87|121->89|126->94|126->94|126->94|138->106|138->106|145->113|145->113|146->114|147->115|147->115|148->116
                   -- GENERATED --
               */
           
